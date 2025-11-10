@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pure Life Solutions - Aquaguard & Air Purifier Dealer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        .scroll-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .scroll-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 20px;
+            font-weight: 700;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            margin-bottom: 40px;
+            opacity: 0.95;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            background: white;
+            color: #667eea;
+            padding: 18px 45px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Products Section */
+        .products {
+            background: #f8f9fa;
+        }
+
+        .products-container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            text-align: center;
+            margin-bottom: 60px;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            padding: 0 20px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.2);
+        }
+
+        .product-icon {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .product-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: #667eea;
+            font-weight: 700;
+        }
+
+        .product-card p {
+            line-height: 1.8;
+            color: #5a6c7d;
+            font-size: 1.05rem;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .benefits-container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            padding: 0 20px;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: scale(1.05);
+        }
+
+        .benefit-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .benefit-item h4 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .benefit-item p {
+            line-height: 1.7;
+            opacity: 0.95;
+            font-size: 1.05rem;
+        }
+
+        /* Health Info Section */
+        .health-info {
+            background: white;
+        }
+
+        .health-container {
+            max-width: 1100px;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .health-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .health-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .health-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .health-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .health-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .health-card li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .health-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Lead Form Section */
+        .lead-form-section {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+
+        .form-container {
+            max-width: 650px;
+            width: 100%;
+            background: white;
+            padding: 50px 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+        }
+
+        .form-container h2 {
+            color: #2c3e50;
+            margin-bottom: 35px;
+            font-size: clamp(1.6rem, 4vw, 2.3rem);
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 18px 45px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(102, 126, 234, 0.5);
+        }
+
+        .success-message {
+            background: #4caf50;
+            color: white;
+            padding: 18px;
+            border-radius: 10px;
+            margin-top: 25px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #2c3e50;
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .contact-info {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-info h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .contact-info > p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+        }
+
+        .contact-icon {
+            font-size: 1.8rem;
+        }
+
+        /* Floating CTA Button */
+        .floating-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 18px 30px;
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(240, 147, 251, 0.5);
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1.05rem;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .floating-cta:hover {
+            transform: scale(1.08) translateY(-3px);
+            box-shadow: 0 12px 35px rgba(240, 147, 251, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .floating-cta {
+                bottom: 20px;
+                right: 20px;
+                padding: 15px 25px;
+                font-size: 0.95rem;
+            }
+
+            .products-grid,
+            .benefits-grid,
+            .health-cards {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .form-container {
+                padding: 35px 25px;
+            }
+
+            .contact-details {
+                flex-direction: column;
+                gap: 25px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Language Toggle Button */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            color: #667eea;
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.95rem;
+            z-index: 1001;
+            transition: all 0.3s ease;
+            border: 2px solid #667eea;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .language-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .floating-cta {
+                bottom: 20px;
+                right: 20px;
+                padding: 15px 25px;
+                font-size: 0.95rem;
+            }
+
+            .language-toggle {
+                top: 15px;
+                left: 50%;
+                right: auto;
+                transform: translateX(-50%);
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .language-toggle:hover {
+                transform: translateX(-50%) scale(1.05);
+            }
+
+            .products-grid,
+            .benefits-grid,
+            .health-cards {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .form-container {
+                padding: 35px 25px;
+            }
+
+            .contact-details {
+                flex-direction: column;
+                gap: 25px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+                margin-top: 40px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .products-grid,
+            .health-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 30px 20px;
+            }
+
+            .language-toggle {
+                top: 12px;
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+
+            .hero-content h1 {
+                margin-top: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Toggle Button -->
+    <div class="language-toggle" onclick="toggleLanguage()" id="langToggle">
+        🌐 हिंदी
+    </div>
+
+    <!-- Hero Section -->
+    <section class="scroll-section hero visible">
+        <div class="hero-content">
+            <h1>Pure Life Solutions</h1>
+            <p>Your Trusted Partner for Water & Air Purification</p>
+            <button class="cta-button" onclick="scrollToForm()">
+                Get a Free Consultation
+            </button>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="scroll-section products">
+        <div class="products-container">
+            <h2 class="section-title">Our Premium Solutions</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <span class="product-icon">💧</span>
+                    <h3>Aquaguard Water Purifiers</h3>
+                    <p>Advanced RO+UV+MTDS technology ensures 100% pure drinking water. Removes harmful bacteria, viruses, and dissolved impurities while retaining essential minerals for your family's health.</p>
+                </div>
+                <div class="product-card">
+                    <span class="product-icon">🌬️</span>
+                    <h3>Air Purifiers</h3>
+                    <p>HEPA filtration technology removes 99.97% of airborne pollutants, allergens, and PM 2.5 particles. Breathe clean, fresh air at home and workplace with our advanced air purification systems.</p>
+                </div>
+                <div class="product-card">
+                    <span class="product-icon">🔧</span>
+                    <h3>Installation & Service</h3>
+                    <p>Professional installation by certified technicians, regular maintenance schedules, and 24/7 customer support. Extended warranty plans and genuine spare parts always available.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="scroll-section benefits">
+        <div class="benefits-container">
+            <h2 class="section-title">Why Choose Us?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <span class="benefit-icon">🏆</span>
+                    <h4>Authorized Dealer</h4>
+                    <p>Official Aquaguard partner with genuine products and full manufacturer warranty</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">💰</span>
+                    <h4>Best Prices</h4>
+                    <p>Competitive pricing with flexible EMI options and special offers available</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">⚡</span>
+                    <h4>Quick Installation</h4>
+                    <p>Same-day installation and setup by our certified technical experts</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">🛡️</span>
+                    <h4>Extended Warranty</h4>
+                    <p>Comprehensive warranty coverage and annual maintenance contracts</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Health Information Section -->
+    <section class="scroll-section health-info">
+        <div class="health-container">
+            <h2 class="section-title">Health Benefits of Pure Water & Clean Air</h2>
+            <div class="health-cards">
+                <div class="health-card">
+                    <h4>💧 Pure Water Benefits</h4>
+                    <ul>
+                        <li>Prevents waterborne diseases like cholera, typhoid, and dysentery</li>
+                        <li>Removes harmful heavy metals, chemicals, and pesticides</li>
+                        <li>Improves digestion, metabolism, and nutrient absorption</li>
+                        <li>Supports kidney function and natural detoxification</li>
+                        <li>Enhances skin health, hydration, and natural glow</li>
+                        <li>Boosts immune system and overall vitality</li>
+                    </ul>
+                </div>
+                <div class="health-card">
+                    <h4>🌬️ Clean Air Benefits</h4>
+                    <ul>
+                        <li>Reduces respiratory infections, cough, and cold</li>
+                        <li>Prevents asthma triggers and allergic reactions</li>
+                        <li>Improves sleep quality and reduces snoring</li>
+                        <li>Enhances concentration, focus, and productivity</li>
+                        <li>Protects from airborne viruses and bacteria</li>
+                        <li>Reduces risk of cardiovascular and lung diseases</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Form Section -->
+    <section class="scroll-section lead-form-section">
+        <div class="form-container">
+            <h2>Get Your Free Water Test & Consultation</h2>
+            <form id="leadForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        placeholder="Enter your name"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        required
+                        pattern="[0-9]{10}"
+                        placeholder="Enter 10-digit mobile number"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="interest">I'm Interested In *</label>
+                    <select id="interest" name="interest" required>
+                        <option value="water-purifier">Water Purifier</option>
+                        <option value="air-purifier">Air Purifier</option>
+                        <option value="both">Both Products</option>
+                        <option value="service">Service & Maintenance</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Additional Message</label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        placeholder="Tell us about your requirements..."
+                    ></textarea>
+                </div>
+                <button type="submit" class="submit-button">
+                    Submit Request
+                </button>
+                <div class="success-message" id="successMessage">
+                    ✓ Thank you! We'll contact you within 24 hours.
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="contact-info">
+            <h2>Visit Our Showroom</h2>
+            <p>Experience our products firsthand and get expert guidance from our team</p>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <span class="contact-icon">📞</span>
+                    <span>+91 XXXX-XXXXXX</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    <span>info@purelifesolutions.com</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <span>Your Location, City</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating CTA -->
+    <div class="floating-cta" onclick="scrollToForm()">
+        📞 Book Free Demo
+    </div>
+
+    <script>
+        // Language translations
+        const translations = {
+            en: {
+                // Hero Section
+                heroTitle: "Pure Life Solutions",
+                heroSubtitle: "Your Trusted Partner for Water & Air Purification",
+                heroCTA: "Get a Free Consultation",
+                
+                // Products Section
+                productsTitle: "Our Premium Solutions",
+                product1Title: "Aquaguard Water Purifiers",
+                product1Desc: "Advanced RO+UV+MTDS technology ensures 100% pure drinking water. Removes harmful bacteria, viruses, and dissolved impurities while retaining essential minerals for your family's health.",
+                product2Title: "Air Purifiers",
+                product2Desc: "HEPA filtration technology removes 99.97% of airborne pollutants, allergens, and PM 2.5 particles. Breathe clean, fresh air at home and workplace with our advanced air purification systems.",
+                product3Title: "Installation & Service",
+                product3Desc: "Professional installation by certified technicians, regular maintenance schedules, and 24/7 customer support. Extended warranty plans and genuine spare parts always available.",
+                
+                // Benefits Section
+                benefitsTitle: "Why Choose Us?",
+                benefit1Title: "Authorized Dealer",
+                benefit1Desc: "Official Aquaguard partner with genuine products and full manufacturer warranty",
+                benefit2Title: "Best Prices",
+                benefit2Desc: "Competitive pricing with flexible EMI options and special offers available",
+                benefit3Title: "Quick Installation",
+                benefit3Desc: "Same-day installation and setup by our certified technical experts",
+                benefit4Title: "Extended Warranty",
+                benefit4Desc: "Comprehensive warranty coverage and annual maintenance contracts",
+                
+                // Health Section
+                healthTitle: "Health Benefits of Pure Water & Clean Air",
+                waterTitle: "💧 Pure Water Benefits",
+                waterBenefit1: "Prevents waterborne diseases like cholera, typhoid, and dysentery",
+                waterBenefit2: "Removes harmful heavy metals, chemicals, and pesticides",
+                waterBenefit3: "Improves digestion, metabolism, and nutrient absorption",
+                waterBenefit4: "Supports kidney function and natural detoxification",
+                waterBenefit5: "Enhances skin health, hydration, and natural glow",
+                waterBenefit6: "Boosts immune system and overall vitality",
+                airTitle: "🌬️ Clean Air Benefits",
+                airBenefit1: "Reduces respiratory infections, cough, and cold",
+                airBenefit2: "Prevents asthma triggers and allergic reactions",
+                airBenefit3: "Improves sleep quality and reduces snoring",
+                airBenefit4: "Enhances concentration, focus, and productivity",
+                airBenefit5: "Protects from airborne viruses and bacteria",
+                airBenefit6: "Reduces risk of cardiovascular and lung diseases",
+                
+                // Form Section
+                formTitle: "Get Your Free Water Test & Consultation",
+                formName: "Full Name *",
+                formNamePlaceholder: "Enter your name",
+                formPhone: "Phone Number *",
+                formPhonePlaceholder: "Enter 10-digit mobile number",
+                formEmail: "Email Address",
+                formEmailPlaceholder: "Enter your email",
+                formInterest: "I'm Interested In *",
+                formOption1: "Water Purifier",
+                formOption2: "Air Purifier",
+                formOption3: "Both Products",
+                formOption4: "Service & Maintenance",
+                formMessage: "Additional Message",
+                formMessagePlaceholder: "Tell us about your requirements...",
+                formSubmit: "Submit Request",
+                formSuccess: "✓ Thank you! We'll contact you within 24 hours.",
+                
+                // Contact Section
+                contactTitle: "Visit Our Showroom",
+                contactDesc: "Experience our products firsthand and get expert guidance from our team",
+                
+                // Floating CTA
+                floatingCTA: "📞 Book Free Demo",
+                
+                // Language Toggle
+                langToggle: "🌐 हिंदी"
+            },
+            hi: {
+                // Hero Section
+                heroTitle: "प्योर लाइफ सॉल्यूशंस",
+                heroSubtitle: "जल और वायु शुद्धिकरण के लिए आपका विश्वसनीय साथी",
+                heroCTA: "निःशुल्क परामर्श प्राप्त करें",
+                
+                // Products Section
+                productsTitle: "हमारे प्रीमियम समाधान",
+                product1Title: "एक्वागार्ड वॉटर प्यूरीफायर",
+                product1Desc: "उन्नत RO+UV+MTDS तकनीक 100% शुद्ध पेयजल सुनिश्चित करती है। हानिकारक बैक्टीरिया, वायरस और घुलित अशुद्धियों को हटाती है जबकि आपके परिवार के स्वास्थ्य के लिए आवश्यक खनिजों को बनाए रखती है।",
+                product2Title: "एयर प्यूरीफायर",
+                product2Desc: "HEPA फिल्ट्रेशन तकनीक 99.97% हवाई प्रदूषकों, एलर्जेन्स और PM 2.5 कणों को हटाती है। हमारे उन्नत वायु शुद्धिकरण सिस्टम के साथ घर और कार्यस्थल पर स्वच्छ, ताजी हवा में सांस लें।",
+                product3Title: "स्थापना और सेवा",
+                product3Desc: "प्रमाणित तकनीशियनों द्वारा पेशेवर स्थापना, नियमित रखरखाव कार्यक्रम और 24/7 ग्राहक सहायता। विस्तारित वारंटी योजनाएं और मूल स्पेयर पार्ट्स हमेशा उपलब्ध।",
+                
+                // Benefits Section
+                benefitsTitle: "हमें क्यों चुनें?",
+                benefit1Title: "अधिकृत डीलर",
+                benefit1Desc: "वास्तविक उत्पादों और पूर्ण निर्माता वारंटी के साथ आधिकारिक एक्वागार्ड साझेदार",
+                benefit2Title: "सर्वोत्तम मूल्य",
+                benefit2Desc: "लचीले EMI विकल्पों और विशेष ऑफ़र के साथ प्रतिस्पर्धी मूल्य निर्धारण",
+                benefit3Title: "त्वरित स्थापना",
+                benefit3Desc: "हमारे प्रमाणित तकनीकी विशेषज्ञों द्वारा उसी दिन स्थापना और सेटअप",
+                benefit4Title: "विस्तारित वारंटी",
+                benefit4Desc: "व्यापक वारंटी कवरेज और वार्षिक रखरखाव अनुबंध",
+                
+                // Health Section
+                healthTitle: "शुद्ध जल और स्वच्छ वायु के स्वास्थ्य लाभ",
+                waterTitle: "💧 शुद्ध जल के लाभ",
+                waterBenefit1: "हैजा, टाइफाइड और पेचिश जैसी जलजनित बीमारियों को रोकता है",
+                waterBenefit2: "हानिकारक भारी धातुओं, रसायनों और कीटनाशकों को हटाता है",
+                waterBenefit3: "पाचन, चयापचय और पोषक तत्व अवशोषण में सुधार करता है",
+                waterBenefit4: "गुर्दे के कार्य और प्राकृतिक विषहरण का समर्थन करता है",
+                waterBenefit5: "त्वचा स्वास्थ्य, जलयोजन और प्राकृतिक चमक बढ़ाता है",
+                waterBenefit6: "प्रतिरक्षा प्रणाली और समग्र जीवन शक्ति को बढ़ाता है",
+                airTitle: "🌬️ स्वच्छ वायु के लाभ",
+                airBenefit1: "श्वसन संक्रमण, खांसी और सर्दी को कम करता है",
+                airBenefit2: "अस्थमा ट्रिगर और एलर्जी प्रतिक्रियाओं को रोकता है",
+                airBenefit3: "नींद की गुणवत्ता में सुधार और खर्राटों को कम करता है",
+                airBenefit4: "एकाग्रता, फोकस और उत्पादकता बढ़ाता है",
+                airBenefit5: "हवाई वायरस और बैक्टीरिया से बचाता है",
+                airBenefit6: "हृदय और फेफड़ों की बीमारियों के जोखिम को कम करता है",
+                
+                // Form Section
+                formTitle: "अपना निःशुल्क जल परीक्षण और परामर्श प्राप्त करें",
+                formName: "पूरा नाम *",
+                formNamePlaceholder: "अपना नाम दर्ज करें",
+                formPhone: "फोन नंबर *",
+                formPhonePlaceholder: "10 अंकों का मोबाइल नंबर दर्ज करें",
+                formEmail: "ईमेल पता",
+                formEmailPlaceholder: "अपना ईमेल दर्ज करें",
+                formInterest: "मुझे इसमें रुचि है *",
+                formOption1: "वॉटर प्यूरीफायर",
+                formOption2: "एयर प्यूरीफायर",
+                formOption3: "दोनों उत्पाद",
+                formOption4: "सेवा और रखरखाव",
+                formMessage: "अतिरिक्त संदेश",
+                formMessagePlaceholder: "हमें अपनी आवश्यकताओं के बारे में बताएं...",
+                formSubmit: "अनुरोध सबमिट करें",
+                formSuccess: "✓ धन्यवाद! हम 24 घंटों के भीतर आपसे संपर्क करेंगे।",
+                
+                // Contact Section
+                contactTitle: "हमारे शोरूम पर जाएं",
+                contactDesc: "हमारे उत्पादों का स्वयं अनुभव करें और हमारी टीम से विशेषज्ञ मार्गदर्शन प्राप्त करें",
+                
+                // Floating CTA
+                floatingCTA: "📞 निःशुल्क डेमो बुक करें",
+                
+                // Language Toggle
+                langToggle: "🌐 English"
+            }
+        };
+
+        // Current language state
+        let currentLang = 'en';
+
+        // Toggle language function
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'hi' : 'en';
+            updateContent();
+        }
+
+        // Update all content based on current language
+        function updateContent() {
+            const t = translations[currentLang];
+            
+            // Hero Section
+            document.querySelector('.hero-content h1').textContent = t.heroTitle;
+            document.querySelector('.hero-content p').textContent = t.heroSubtitle;
+            document.querySelector('.hero-content .cta-button').textContent = t.heroCTA;
+            
+            // Products Section
+            document.querySelectorAll('.section-title')[0].textContent = t.productsTitle;
+            const productCards = document.querySelectorAll('.product-card');
+            productCards[0].querySelector('h3').textContent = t.product1Title;
+            productCards[0].querySelector('p').textContent = t.product1Desc;
+            productCards[1].querySelector('h3').textContent = t.product2Title;
+            productCards[1].querySelector('p').textContent = t.product2Desc;
+            productCards[2].querySelector('h3').textContent = t.product3Title;
+            productCards[2].querySelector('p').textContent = t.product3Desc;
+            
+            // Benefits Section
+            document.querySelectorAll('.section-title')[1].textContent = t.benefitsTitle;
+            const benefitItems = document.querySelectorAll('.benefit-item');
+            benefitItems[0].querySelector('h4').textContent = t.benefit1Title;
+            benefitItems[0].querySelector('p').textContent = t.benefit1Desc;
+            benefitItems[1].querySelector('h4').textContent = t.benefit2Title;
+            benefitItems[1].querySelector('p').textContent = t.benefit2Desc;
+            benefitItems[2].querySelector('h4').textContent = t.benefit3Title;
+            benefitItems[2].querySelector('p').textContent = t.benefit3Desc;
+            benefitItems[3].querySelector('h4').textContent = t.benefit4Title;
+            benefitItems[3].querySelector('p').textContent = t.benefit4Desc;
+            
+            // Health Section
+            document.querySelectorAll('.section-title')[2].textContent = t.healthTitle;
+            const healthCards = document.querySelectorAll('.health-card');
+            healthCards[0].querySelector('h4').textContent = t.waterTitle;
+            const waterBenefits = healthCards[0].querySelectorAll('li');
+            waterBenefits[0].textContent = t.waterBenefit1;
+            waterBenefits[1].textContent = t.waterBenefit2;
+            waterBenefits[2].textContent = t.waterBenefit3;
+            waterBenefits[3].textContent = t.waterBenefit4;
+            waterBenefits[4].textContent = t.waterBenefit5;
+            waterBenefits[5].textContent = t.waterBenefit6;
+            
+            healthCards[1].querySelector('h4').textContent = t.airTitle;
+            const airBenefits = healthCards[1].querySelectorAll('li');
+            airBenefits[0].textContent = t.airBenefit1;
+            airBenefits[1].textContent = t.airBenefit2;
+            airBenefits[2].textContent = t.airBenefit3;
+            airBenefits[3].textContent = t.airBenefit4;
+            airBenefits[4].textContent = t.airBenefit5;
+            airBenefits[5].textContent = t.airBenefit6;
+            
+            // Form Section
+            document.querySelector('.form-container h2').textContent = t.formTitle;
+            document.querySelectorAll('.form-group label')[0].textContent = t.formName;
+            document.getElementById('name').placeholder = t.formNamePlaceholder;
+            document.querySelectorAll('.form-group label')[1].textContent = t.formPhone;
+            document.getElementById('phone').placeholder = t.formPhonePlaceholder;
+            document.querySelectorAll('.form-group label')[2].textContent = t.formEmail;
+            document.getElementById('email').placeholder = t.formEmailPlaceholder;
+            document.querySelectorAll('.form-group label')[3].textContent = t.formInterest;
+            
+            const options = document.querySelectorAll('#interest option');
+            options[0].textContent = t.formOption1;
+            options[1].textContent = t.formOption2;
+            options[2].textContent = t.formOption3;
+            options[3].textContent = t.formOption4;
+            
+            document.querySelectorAll('.form-group label')[4].textContent = t.formMessage;
+            document.getElementById('message').placeholder = t.formMessagePlaceholder;
+            document.querySelector('.submit-button').textContent = t.formSubmit;
+            document.getElementById('successMessage').textContent = t.formSuccess;
+            
+            // Contact Section
+            document.querySelector('.contact-info h2').textContent = t.contactTitle;
+            document.querySelector('.contact-info > p').textContent = t.contactDesc;
+            
+            // Floating CTA & Language Toggle
+            document.querySelector('.floating-cta').textContent = t.floatingCTA;
+            document.getElementById('langToggle').textContent = t.langToggle;
+        }
+
+        // Smooth scroll animation
+        function scrollToForm() {
+            document.querySelector('.lead-form-section').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        // Intersection Observer for scroll animations
+        const sections = document.querySelectorAll('.scroll-section');
+        
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Form submission handler
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                interest: document.getElementById('interest').value,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toISOString(),
+                language: currentLang
+            };
+
+            // Log the form data (you can replace this with actual API call)
+            console.log('Lead Data:', formData);
+
+            // Show success message
+            const successMessage = document.getElementById('successMessage');
+            successMessage.classList.add('show');
+
+            // Reset form
+            document.getElementById('leadForm').reset();
+
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 5000);
+
+            // Here you would typically send data to your backend
+            // Example: 
+            // fetch('/api/leads', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(formData)
+            // });
+        }
+    </script>
+</body>
+</html>
